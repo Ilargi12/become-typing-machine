@@ -21,7 +21,7 @@ Desktop application for fast typing practice.
 ## Contributors :mushroom:
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/kraleppa"><img src="https://avatars1.githubusercontent.com/u/56135216?s=460&u=359e017d16c70a31d3bdb086172308cc6f045acf&v=4" width="100px;" alt=""/><br /><sub><b>Krzysztof Nalepar</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/kraleppa"><img src="https://avatars1.githubusercontent.com/u/56135216?s=460&u=359e017d16c70a31d3bdb086172308cc6f045acf&v=4" width="100px;" alt=""/><br /><sub><b>Krzysztof Nalepa</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/Ilargi12"><img src="https://avatars3.githubusercontent.com/u/45597301?s=460&u=0e984d3e0a187a6fb0b8a776b4754b8ceed2041c&v=4" width="100px;" alt=""/><br /><sub><b>Bartłomiej Plewnia</b></sub></a><br />
     </td>
   </tr>
