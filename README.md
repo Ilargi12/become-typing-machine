@@ -6,7 +6,7 @@
 
 ## Project Description
 
-Desktop application to fast typing practice.
+Desktop application for fast typing practice.
 
 ## Screenshots
 ### Main Menu
