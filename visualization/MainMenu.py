@@ -1,5 +1,4 @@
 import tkinter as tk
-from PIL import ImageTk, Image
 
 
 class MainMenu(tk.Frame):
@@ -7,8 +6,7 @@ class MainMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        # label = tk.Label(self, text="Main Menu", font=controller.title_font, bg="#f9f8fd")
-        # label.pack(fill="x", pady=10)
+
         self.configure(bg="#f9f8fd")
 
         self.title = tk.PhotoImage(file=r"img/title.png")

@@ -137,3 +137,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 /venv/
+
+
+/server/stats.sqlite3
+/server/Statistics.sqlite3
