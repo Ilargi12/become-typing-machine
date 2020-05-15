@@ -28,7 +28,7 @@ class TextMode(tk.Frame):
                                    text="%ds" % self.service.time, font=("Helvetica", 16))
         self.time_label.pack()
 
-        self.display_text.tag_configure("center", justify='center')
+        self.display_text.tag_configure("center", justify='center', font=("Comic Sans MS", 11))
 
         self.display_text.tag_configure("good", foreground="blue")
         self.display_text.tag_configure("bad", foreground="red")
@@ -36,7 +36,7 @@ class TextMode(tk.Frame):
         self.display_text.pack()
 
         tk.Button(self, image=self.play_stop_photo, bg="#f9f8fd", borderwidth=0,
-                  command=self.start_stop_game).pack(pady=(5, 20))
+                  command=self.start_stop_game).pack(pady=(5, 10))
 
         tk.Button(self, image=self.menu_photo, bg="#f9f8fd", borderwidth=0,
                   command=lambda: self.go_to_menu()).pack()

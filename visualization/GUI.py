@@ -13,7 +13,7 @@ class GUI(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.title("Become Typing Machine!")
-        self.geometry("1000x700")
+        self.geometry("1000x720")
         self.title_font = font.Font(family="Helvetica", size=20)
 
         self.container = tk.Frame(self)
