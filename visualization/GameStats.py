@@ -25,6 +25,9 @@ class GameStats(tk.Frame):
         self.errors = tk.PhotoImage(file=r"img/errors.png")
         self.back = tk.PhotoImage(file=r"img/back.png")
         self.menu = tk.PhotoImage(file=r"img/menu.png")
+        self.save = tk.PhotoImage(file=r"img/save.png")
+        self.insert_name = tk.PhotoImage(file=r"img/insert_name.png")
+        self.save2 = tk.PhotoImage(file=r"img/save2.png")
 
         tk.Label(self, image=self.title, bg="#f9f8fd").grid(row=0, columnspan=3)
 
@@ -49,3 +52,17 @@ class GameStats(tk.Frame):
 
         tk.Button(self, image=self.menu, bg="#f9f8fd", borderwidth=0,
                   command=lambda: controller.show_frame("MainMenu")).grid(row=9, column=2)
+
+        tk.Button(self, image=self.save, bg="#f9f8fd", borderwidth=0,
+                  command=self.popup).grid(row=9, column=1)
+
+    def popup(self):
+        win = tk.Toplevel()
+        win.wm_title("Become a typing machine!")
+        win.config(bg="#f9f8fd")
+        tk.Label(win, image=self.insert_name, bg="#f9f8fd").pack()
+        tk.Entry(win, bg="#f9f8fd", bd=1, font=("Comic Sans MS", 20), justify='center')\
+            .pack(pady=(10, 10))
+        tk.Button(win, image=self.save2, bd=0, command=win.destroy).pack(pady=(5, 0))
+
+
