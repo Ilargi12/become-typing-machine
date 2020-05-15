@@ -1,4 +1,5 @@
 import tkinter as tk
+import service.HttpModule
 
 from service.GameService import GameService
 
@@ -7,14 +8,16 @@ class GameStats(tk.Frame):
     def __init__(self, parent, controller, service, prev):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.save_window = None
+        self.prev = prev
 
-        stat_time = service.game_time - service.time
-        if stat_time == 0:
-            stat_wpm = 0
-            stat_cpm = 0
+        self.stat_time = service.game_time - service.time
+        if self.stat_time == 0:
+            self.stat_wpm = 0
+            self.stat_cpm = 0
         else:
-            stat_wpm = (service.words_correct + service.words_incorrect) / (stat_time / 60)
-            stat_cpm = service.char_counter / (stat_time / 60)
+            self.stat_wpm = (service.words_correct + service.words_incorrect) / (self.stat_time / 60)
+            self.stat_cpm = service.char_counter / (self.stat_time / 60)
 
         self.configure(bg="#f9f8fd")
 
@@ -32,15 +35,15 @@ class GameStats(tk.Frame):
         tk.Label(self, image=self.title, bg="#f9f8fd").grid(row=0, columnspan=3)
 
         tk.Label(self, image=self.wpm, bg="#f9f8fd").grid(row=1, column=1)
-        tk.Label(self, text="{:.2f}".format(stat_wpm), font=("Helvetica", 16), bg="#f9f8fd") \
+        tk.Label(self, text="{:.2f}".format(self.stat_wpm), font=("Helvetica", 16), bg="#f9f8fd") \
             .grid(row=2, column=1, pady=(0, 20))
 
         tk.Label(self, image=self.cpm, bg="#f9f8fd").grid(row=3, column=1)
-        tk.Label(self, text="{:.2f}".format(stat_cpm), font=("Helvetica", 16), bg="#f9f8fd") \
+        tk.Label(self, text="{:.2f}".format(self.stat_cpm), font=("Helvetica", 16), bg="#f9f8fd") \
             .grid(row=4, column=1, pady=(0, 20))
 
         tk.Label(self, image=self.time, bg="#f9f8fd").grid(row=5, column=1)
-        tk.Label(self, text="{}s".format(stat_time), font=("Helvetica", 16), bg="#f9f8fd") \
+        tk.Label(self, text="{}s".format(self.stat_time), font=("Helvetica", 16), bg="#f9f8fd") \
             .grid(row=6, column=1, pady=(0, 20))
 
         tk.Label(self, image=self.errors, bg="#f9f8fd").grid(row=7, column=1)
@@ -57,12 +60,21 @@ class GameStats(tk.Frame):
                   command=self.popup).grid(row=9, column=1)
 
     def popup(self):
-        win = tk.Toplevel()
-        win.wm_title("Become a typing machine!")
-        win.config(bg="#f9f8fd")
-        tk.Label(win, image=self.insert_name, bg="#f9f8fd").pack()
-        tk.Entry(win, bg="#f9f8fd", bd=1, font=("Comic Sans MS", 20), justify='center')\
-            .pack(pady=(10, 10))
-        tk.Button(win, image=self.save2, bd=0, command=win.destroy).pack(pady=(5, 0))
+        self.save_window = tk.Toplevel()
+        self.save_window.wm_title("Become a typing machine!")
+        self.save_window.config(bg="#f9f8fd")
+        tk.Label(self.save_window, image=self.insert_name, bg="#f9f8fd").pack()
+        entry = tk.Entry(self.save_window, bg="#f9f8fd", bd=1, font=("Comic Sans MS", 20), justify='center')
+        entry.pack(pady=(10, 10))
+
+        tk.Button(self.save_window, image=self.save2, bd=0,
+                  command=lambda: self.save_f(entry.get())).pack(pady=(5, 0))
+
+    def save_f(self, name):
+        if name:
+            service.HttpModule.save_result(name, self.prev, self.stat_cpm, self.stat_wpm, self.stat_time)
+        self.save_window.destroy()
+
+
 
 
