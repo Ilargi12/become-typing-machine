@@ -1,8 +1,12 @@
 # Become a typing machine!
 
-![requests badge](https://img.shields.io/badge/pip%20install-requests-red)
-![bs4 badge](https://img.shields.io/badge/pip%20install-bs4-yellow)
-![RandomWords badge](https://img.shields.io/badge/pip%20install-RandomWords-green)
+[![requests badge](https://img.shields.io/badge/requests-2.23.0-red)](https://requests.readthedocs.io/en/master/)
+[![bs4 badge](https://img.shields.io/badge/bs4-4.9.0-yellow)](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+[![RandomWords badge](https://img.shields.io/badge/RandomWords-0.2.1-green)](https://libraries.io/pypi/RandomWords)
+[![flask badge](https://img.shields.io/badge/flask-1.1.2-blue)](https://pypi.org/project/Flask/)
+[![sqlalchemy badge](https://img.shields.io/badge/flask--SQLAlchemy-2.4.1-blueviolet)](https://pypi.org/project/Flask-SQLAlchemy/)
+
+
 
 ## Project Description
 
