@@ -12,3 +12,8 @@ def save_result(name, mode, cpm, wpm, time):
         "time": time
     }
     print(requests.post(url, json=stat).status_code)
+
+
+def get_all_stats():
+    # zwraca listę słowników
+    return requests.get(url=url).json()
