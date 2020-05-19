@@ -20,7 +20,7 @@ def generate_data(n):
     for _ in range(n):
         name = names.get_first_name()
         mode = 'TextMode' if random.randint(0, 1) == 1 else 'OneWordMode'
-        wpm = random.uniform(20, 80)
+        wpm = random.uniform(10, 180)
         cpm = random.uniform(160, 300)
         time = 60
         insert_function(name, mode, wpm, cpm, time)
@@ -33,4 +33,5 @@ def delete_all_data():
 
 
 if __name__ == "__main__":
+    delete_all_data()
     generate_data(100)
