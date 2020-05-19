@@ -56,7 +56,7 @@ class GlobalStats(tk.Frame):
 
     def get_top_ten_players(self):
         list_of_players = list(self.dict_of_players)
-        list_of_players.sort(key=lambda e: e['wpm'])
+        list_of_players.sort(key=lambda e: e['wpm'], reverse=True)
         list_of_players = list(dict((v['name'], v) for v in list_of_players).values())
         return list_of_players
 
