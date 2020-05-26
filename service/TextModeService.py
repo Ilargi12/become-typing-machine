@@ -1,4 +1,5 @@
 from service.GameService import GameService
+from tkinter import messagebox
 
 
 class TextModeService(GameService):
@@ -11,11 +12,16 @@ class TextModeService(GameService):
         self.display_text = display_text
 
     def start_game(self):
+        try:
+            self.text = self.generator.get_random_sentences()
+        except Exception:
+            messagebox.showerror("Connection Error", "TextMode is available only in online mode")
+            return
         super(TextModeService, self).start_game()
         self.letter_line_index = 1
         self.line_index = 0
         self.mistakes_index_list = []
-        self.text = self.generator.get_random_sentences()
+
         self.display_text.configure(state="normal")
         self.display_text.delete('1.0', "end")
         for string in self.text:

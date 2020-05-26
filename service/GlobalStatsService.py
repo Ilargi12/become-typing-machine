@@ -30,5 +30,6 @@ class GlobalStatsService:
                 wpm_stats[4] += 1
             elif player['wpm'] <= 180:
                 wpm_stats[5] += 1
-
+        if wpm_stats == [0, 0, 0, 0, 0, 0]:
+            return None
         return wpm_stats
