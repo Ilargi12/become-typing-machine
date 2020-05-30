@@ -88,8 +88,10 @@ class GlobalStats(tk.Frame):
         self.service = None
         self.top_ten_players.destroy()
         self.table.destroy()
-        self.pie.clear()
-        self.graph.get_tk_widget().destroy()
+        if self.pie is not None:
+            self.pie.clear()
+        if self.graph is not None:
+            self.graph.get_tk_widget().destroy()
         self.wpm_stats.destroy()
         self.menu_button.destroy()
         self.refresh_button.destroy()
