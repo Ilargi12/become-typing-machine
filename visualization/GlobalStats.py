@@ -24,6 +24,7 @@ class GlobalStats(tk.Frame):
         self.wpm_stats = None
         self.menu_button = None
         self.refresh_button = None
+        self.pie = None
         self.display_visualization()
 
     def show_table(self):
@@ -56,11 +57,11 @@ class GlobalStats(tk.Frame):
         my_circle = plt.Circle((0, 0), 0.6, color='#f9f8fd')
         plt.pie(sizes, labels=names, colors=['red', 'green', 'blue', 'skyblue', 'yellow', '#9d4edd'],
                 wedgeprops={'linewidth': 5, 'edgecolor': '#f9f8fd'})
-        p = plt.gcf()
-        p.patch.set_facecolor('#f9f8fd')
-        p.set_size_inches(2.7, 2.7)
-        p.gca().add_artist(my_circle)
-        self.graph = FigureCanvasTkAgg(p, self)
+        self.pie = plt.gcf()
+        self.pie.patch.set_facecolor('#f9f8fd')
+        self.pie.set_size_inches(2.7, 2.7)
+        self.pie.gca().add_artist(my_circle)
+        self.graph = FigureCanvasTkAgg(self.pie, self)
         self.graph.get_tk_widget().pack(fill='x')
 
     def display_visualization(self):
@@ -84,8 +85,10 @@ class GlobalStats(tk.Frame):
         self.refresh_button.place(x=600, y=620)
 
     def delete_visualization(self):
+        self.service = None
         self.top_ten_players.destroy()
         self.table.destroy()
+        self.pie.clear()
         self.graph.get_tk_widget().destroy()
         self.wpm_stats.destroy()
         self.menu_button.destroy()
